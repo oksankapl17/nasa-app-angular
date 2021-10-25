@@ -1,5 +1,68 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/cdk/overlay-prebuilt.css';
 @import "assets/scss/theme.scss";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.d-flex-center {
+  @extend .d-flex;
+  @extend .flex-column;
+  @extend .align-center;
+  justify-content: center;
+}
+
+.mat-card-actions.d-flex-end,
+.d-flex-end {
+  @extend .d-flex;
+  @extend .flex-row;
+  justify-content: flex-end;
+}
+
+.beige-color {
+  color: #A18275
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.full-height {
+  min-height: calc(100vh - 64px);
+}
+
+img.page-img {
+  margin: 0 auto;
+  max-width: 100%;
+  width: 30%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 5px;
+}

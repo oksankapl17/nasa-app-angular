@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <div class="d-flex flex-row align-center">
+    <button mat-icon-button (click)="navToggle.emit()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>NASA App</span>
+  </div>
+  <button mat-icon-button (click)="toggleTheme.emit()" aria-label="Theme icon">
+    <mat-icon>format_color_fill</mat-icon>
+  </button>
+</mat-toolbar>

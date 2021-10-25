@@ -1,38 +1,37 @@
 <mat-card>
   <div class="d-flex-center">
-    <mat-card-title class="beige-color"> Explore NASA`s expeditions to Mars</mat-card-title>
-    <img mat-card-image src="assets/img.png">
+    <mat-card-title class="mat-typography mat-primary"><h1>Explore NASA`s expeditions to Mars</h1></mat-card-title>
+    <img class="page-img" mat-card-image src="assets/img.png" alt="rover">
   </div>
   <mat-card-content>
     <div class="d-flex-center">
-      <form [formGroup]="reactiveForm">
-        <mat-form-field appearance="fill">
+      <form [formGroup]="reactiveForm" (ngSubmit)="onFetchPhotos()">
+        <mat-form-field appearance="outline">
           <mat-label>Select a Rover</mat-label>
           <mat-select formControlName="rover">
-            <mat-option *ngFor="let food of foods" [value]="food.value">
-              {{food.value}}
+            <mat-option *ngFor="let rover of rovers" [value]="rover.value">
+              {{rover.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Select Camera</mat-label>
           <mat-select formControlName="camera">
-            <mat-option *ngFor="let food of foods" [value]="food.value">
-              {{food.value}}
+            <mat-option *ngFor="let camera of cameras" [value]="camera.value">
+              {{camera.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Select Sol</mat-label>
-          <mat-select formControlName="sol">
-            <mat-option *ngFor="let food of foods" [value]="food.value">
-              {{food.value}}
-            </mat-option>
-          </mat-select>
+          <input formControlName="sol" matInput placeholder="sol attribute (0-1000)" type="number">
         </mat-form-field>
+
         <div>
           <mat-card-actions class="d-flex-end m-0">
             <button
+              type="submit"
+              color="primary"
               mat-raised-button
             >Submit
             </button>
@@ -40,7 +39,14 @@
         </div>
       </form>
     </div>
+    <div *ngIf="(error | async) as errorMessage">
+      <h3>An error Occurred!</h3>
+      <p>{{errorMessage}}</p>
+    </div>
   </mat-card-content>
   <mat-card-footer></mat-card-footer>
 </mat-card>
-
+<!--<div class=" " *ngFor="let photo of photos">-->
+<!--  <img [src]="photo?.img_src" alt="Photo">-->
+<!--</div>-->
+<gallery *ngIf="images?.length" [items]="images"></gallery>

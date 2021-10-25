@@ -1,2 +1,18 @@
-
-<app-photo-form></app-photo-form>
+<div [ngClass]="theme">
+  <app-toolbar (toggleTheme)="toggleTheme()" (navToggle)="navToggle()"></app-toolbar>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+        <mat-list-item *ngFor="let link of links">
+          <a [routerLink]="link.route" (click)="closeSidenav()" routerLinkActive="active-link" class="list-item">
+            <mat-icon>{{link.icon}}</mat-icon>
+            {{link.title}}</a>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

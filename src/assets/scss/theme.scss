@@ -3,32 +3,29 @@
 @include mat.core();
 
 // Define a light theme
-$light-primary: mat.define-palette(mat.$indigo-palette);
-$light-accent: mat.define-palette(mat.$pink-palette);
+$theme-primary: mat.define-palette(mat.$brown-palette);
+$theme-accent: mat.define-palette(mat.$grey-palette);
+$theme-warn: mat.define-palette(mat.$red-palette);
 $light-theme: mat.define-light-theme((
   color: (
-    primary: $light-primary,
-    accent: $light-accent,
+    primary: $theme-primary,
+    accent: $theme-accent,
+    warn: $theme-warn
   )
 ));
 
 // Define a dark theme
-$dark-primary: mat.define-palette(mat.$pink-palette);
-$dark-accent: mat.define-palette(mat.$blue-gray-palette);
 $dark-theme: mat.define-dark-theme((
   color: (
-    primary: $dark-primary,
-    accent: $dark-accent,
+    primary: $theme-primary,
+    accent: $theme-accent,
   )
 ));
 
-// Apply the dark theme by default
-@include mat.core-theme($dark-theme);
-@include mat.button-theme($dark-theme);
+@include mat.all-component-themes($light-theme);
 
-// Apply the light theme only when the `.my-light-theme` CSS class is applied
+// Apply the light theme only when the `.dark-theme` CSS class is applied
 // to an ancestor element of the components (such as `body`).
-.my-light-theme {
-  @include mat.core-color($light-theme);
-  @include mat.button-color($light-theme);
+.dark-theme {
+  @include mat.all-component-themes($dark-theme);
 }
